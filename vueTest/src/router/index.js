@@ -7,6 +7,7 @@ Vue.use(Router)
 
 export default new Router({
   mode:'history',//将hash路径改为history，即取代哦浏览器url中的#变成html模式
+  linkActiveClass:'active',
   routes: [
     {
       path: '',
