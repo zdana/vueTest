@@ -1,7 +1,11 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <!-- <router-view/> -->
+    <!-- router-link是vuerouter带来的全局组件 -->
+    <router-link to="/home">首页</router-link>
+    <router-link to="/about">关于</router-link>
+    <!--  <router-view/>表示占位，显示对应vue页面的内容 -->
+     <router-view/>
   </div>
 </template>
 
