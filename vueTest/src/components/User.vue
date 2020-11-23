@@ -1,12 +1,16 @@
 <template>
-  <div class="hello">
-    <h2>我是首页</h2>
+  <div>
+    <h2>我是用户界面</h2>
+    <p>我是用户诶</p>
+    <!--$route表示目前处于活跃对象 
+        router是整个new的对象 -->
+    <h2>{{this.$route.params.userId}}</h2>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Home',
+  name: 'User',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
