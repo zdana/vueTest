@@ -1,9 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home'
-import About from '@/components/About'
-import User from '@/components/User'
+// import Home from '@/components/Home'
+// import About from '@/components/About'
+// import User from '@/components/User'
 
+/*路由懒加载
+  会对懒加载的js文件分开打包，因此该文件只有当路由被访问时才会加载
+*/
+const Home = () => import('../components/Home.vue')
+const About = () => import('../components/About.vue')
+const User = () => import('../components/User.vue')
 
 Vue.use(Router)
 
