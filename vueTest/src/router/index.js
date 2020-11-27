@@ -8,6 +8,8 @@ import Router from 'vue-router'
   会对懒加载的js文件分开打包，因此该文件只有当路由被访问时才会加载
 */
 const Home = () => import('../components/Home.vue')
+const HomeNews = () => import('../components/HomeNews.vue')
+const HomeMessage = () => import('../components/HomeMessage.vue')
 const About = () => import('../components/About.vue')
 const User = () => import('../components/User.vue')
 
@@ -24,7 +26,19 @@ export default new Router({
     {
       path: '/home',
       name: 'Home',
-      component: Home
+      component: Home,
+      children:[
+        {
+          path: 'news',
+          name: 'news',
+          component: HomeNews,
+        },
+        {
+          path: 'message',
+          name: 'message',
+          component: HomeMessage,
+        }
+      ]
     },
     {
       path: '/about',
