@@ -18,7 +18,12 @@
 
     <router-link to="/home" >首页</router-link>
     <router-link to="/about">关于</router-link>
+    <!-- 传参的两种方法
+      1. 不携带参数
+      2. 携带参数
+     -->
     <router-link :to="'/user/'+userId">我的</router-link>
+    <router-link :to="{path:'/profile',query:{name:'why',age:18}}">档案</router-link>
     <!--  <router-view/>表示占位，根据当前路径动态渲染不同组件-->
      <router-view/>
   </div>
