@@ -3,7 +3,7 @@
     <h2>我是档案界面</h2>
     <!--$route表示目前处于活跃对象 
         router是整个new的对象 -->
-    <h2>{{this.$route.params.userId}}</h2>
+    <h2>{{this.$route.params.name}}</h2>
   </div>
 </template>
 
@@ -12,7 +12,6 @@ export default {
   name: 'User',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
     }
   }
 }

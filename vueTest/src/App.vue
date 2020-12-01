@@ -24,6 +24,10 @@
      -->
     <router-link :to="'/user/'+userId">我的</router-link>
     <router-link :to="{path:'/profile',query:{name:'why',age:18}}">档案</router-link>
+    
+    <!-- 通过button点击跳转 -->
+    <button @click="userClick">用户</button>
+    <button @click="profileClick">档案</button>
     <!--  <router-view/>表示占位，根据当前路径动态渲染不同组件-->
      <router-view/>
   </div>
@@ -47,6 +51,17 @@ export default {
     aboutClick(){
       // this.$router.push('/about')
       this.$router.replace('/about')
+    },
+    userClick(){
+      this.$router.push('/user/'+this.userId)
+    },
+    profileClick(){
+      this.$router.push({
+        path:'/profile',
+        query:{
+          name:'zhangsan'
+        }
+      })
     }
   }
 }
