@@ -42,7 +42,10 @@ const routes=[
   {
     path: '/about',
     name: '关于',
-    component: About
+    component: About,
+    beforeEach:(to,from,next)=>{
+      
+    }
   },
   {
     path: '/user/:userId',
@@ -61,10 +64,15 @@ const router=new VueRouter({
   linkActiveClass:'active',
 })
 // 路由守卫
+// 前置守卫(guard)
 router.beforeEach(function(to,from,next){
   // 从from跳转到to
   document.title=to.name
-next()
+  next()
 })
+// 后置守卫(hook)
+// 不需要调用next()函数
+router.afterEach((to,from)=>{
 
+})
 export default router
