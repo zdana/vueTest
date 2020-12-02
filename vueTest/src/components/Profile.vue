@@ -4,6 +4,9 @@
     <!--$route表示目前处于活跃对象 
         router是整个new的对象 -->
     <h2>{{this.$route.params.name}}</h2>
+    <button @click="btnClick">
+      按钮
+    </button>
   </div>
 </template>
 
@@ -13,7 +16,15 @@ export default {
   data () {
     return {
     }
+  },
+  methods:{
+    btnClick(){
+      console.log(this.$router);
+      // this.$route:当前处于活跃的路由
+      console.log(this.$route) 
+    }
   }
+
 }
 </script>
 

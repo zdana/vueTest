@@ -15,6 +15,14 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  created(){
+    /* 修改浏览器页签名
+      但需要逐个去写，比较麻烦，
+      router->index.js中提供路由守卫方法
+    */
+    
+    document.title='首页';
   }
 }
 </script>

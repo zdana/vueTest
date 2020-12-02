@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import VueRouter from 'vue-router'
 // import Home from '@/components/Home'
 // import About from '@/components/About'
 // import User from '@/components/User'
@@ -16,45 +17,54 @@ const Profile = () => import('../components/Profile.vue')
 
 Vue.use(Router)
 
-export default new Router({
+const routes=[
+  {
+    path: '',
+    redirect:'/home'//redirect,重定向，即当访问‘’时定向到home中
+  },
+  {
+    path: '/home',
+    name: '首页',
+    component: Home,
+    children:[
+      {
+        path: 'news',
+        name: '新闻',
+        component: HomeNews,
+      },
+      {
+        path: 'message',
+        name: '消息',
+        component: HomeMessage,
+      }
+    ]
+  },
+  {
+    path: '/about',
+    name: '关于',
+    component: About
+  },
+  {
+    path: '/user/:userId',
+    name: '我的',
+    component: User
+  },
+  {
+    path: '/profile/',
+    name: '档案',
+    component: Profile
+  }
+]
+const router=new VueRouter({
+  routes,
   mode:'history',//将hash路径改为history，即取代哦浏览器url中的#变成html模式
   linkActiveClass:'active',
-  routes: [
-    {
-      path: '',
-      redirect:'/home'//redirect,重定向，即当访问‘’时定向到home中
-    },
-    {
-      path: '/home',
-      name: 'Home',
-      component: Home,
-      children:[
-        {
-          path: 'news',
-          name: 'news',
-          component: HomeNews,
-        },
-        {
-          path: 'message',
-          name: 'message',
-          component: HomeMessage,
-        }
-      ]
-    },
-    {
-      path: '/about',
-      name: 'About',
-      component: About
-    },
-    {
-      path: '/user/:userId',
-      name: 'User',
-      component: User
-    },
-    {
-      path: '/profile/',
-      name: 'Profile',
-      component: Profile
-    }
-  ]
 })
+// 路由守卫
+router.beforeEach(function(to,from,next){
+  // 从from跳转到to
+  document.title=to.name
+next()
+})
+
+export default router
