@@ -29,7 +29,10 @@
     <button @click="userClick">用户</button>
     <button @click="profileClick">档案</button>
     <!--  <router-view/>表示占位，根据当前路径动态渲染不同组件-->
-     <router-view/>
+    <!-- 排除Profile,User的导航守卫，即进入时创建组件，退出时销毁组件 -->
+     <keep-alive exclude="Profile,User">
+       <router-view/>
+     </keep-alive>
   </div>
 </template>
 

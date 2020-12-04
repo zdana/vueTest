@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: 'User',
+  name: 'Profile',
   data () {
     return {
     }
