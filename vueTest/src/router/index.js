@@ -19,16 +19,27 @@ const Category = () => import('../views/category/Category.vue')
 const Cart = () => import('../views/cart/Cart.vue')
 const Profile = () => import('../views/profile/Profile.vue')
 
+const VueIndex = () => import('../components/VuexIndex.vue')
+
 Vue.use(Router)
 const routes=[
   {
         path: '',
-        redirect:'/home'//redirect,重定向，即当访问‘’时定向到home中
+        redirect:'/VueIndex'//redirect,重定向，即当访问‘’时定向到home中
   },
   {
-        path: '/home',
-        name: '首页',
-        component: Home,
+    path: '/VueIndex',
+    name: 'vuex',
+    component: VueIndex,
+  },
+  {
+    path: '',
+    redirect:'/home'//redirect,重定向，即当访问‘’时定向到home中
+},
+  {
+      path: '/home',
+      name: '首页',
+      component: Home,
   },
   {
     path: '/category',
@@ -44,7 +55,7 @@ const routes=[
     path: '/profile',
     name: '我的',
     component: Profile,
-  }
+  },
 ]
 // const routes=[
 //   {
