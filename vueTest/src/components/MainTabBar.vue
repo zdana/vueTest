@@ -34,5 +34,65 @@ export default{
     TabBar,
     TabBarItem
   },
+  mounted(){
+    this.promiseTest();
+  },
+  methods:{
+    promiseTest(){
+      // //1. promise的基本使用
+      // new Promise((resolve,reject)=>{
+      //   setTimeout(()=>{
+      //     // 成功的时候调用
+      //     resolve('hello,world')
+      //     // 失败的时候调用
+      //     reject('error')
+      //   })
+      // }).then((data)=>{
+      //   console.log(data)
+      // }).catch((err)=>{
+      //   console.log(err)
+      // })
+
+      // // 2.promise的另一种写法，常用
+      // new Promise((resolve,reject)=>{
+      //   setTimeout(()=>{
+      //     // 成功的时候调用
+      //     resolve('hello,world')
+      //     // 失败的时候调用
+      //     reject('error')
+      //   })
+      // }).then((data)=>{
+      //   console.log(data)
+      // },err=>{
+      //   console.log(data)
+      // })
+
+      // 3.promise的中return简写
+      new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+          resolve('aaa')
+        },1000)
+      }).then((res)=>{
+        console.log(res,'第一层处理的代码')
+        // 对结果进行第一次处理
+        // return new Promise((resolve,reject)=>{
+        //   reject('err')
+        // })
+        // 上三行可以简写为
+        return Promise.reject('error message')
+      }).then((res)=>{
+        console.log(res,'第二层处理的代码')
+        // return new Promise(resolve=>{
+        //   resolve(res+'222')
+        // }) 
+        // 4.省略promise.resolve
+        return res+'222'
+      }).then((res)=>{
+        console.log(res,'第三层处理的代码')
+      }).catch(err=>{
+        console.log(err)
+      })
+    }
+  }
 }
 </script>
