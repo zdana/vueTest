@@ -25,20 +25,20 @@
   </div>
 </template>
 <script>
-import TabBar from 'components/tabbar/TabBar'
-import TabBarItem from 'components/tabbar/TabBarItem'
+import TabBar from "components/tabbar/TabBar";
+import TabBarItem from "components/tabbar/TabBarItem";
 
-export default{
-  name:'MainTabBar',
-    components:{
+export default {
+  name: "MainTabBar",
+  components: {
     TabBar,
     TabBarItem
   },
-  mounted(){
+  mounted() {
     this.promiseTest();
   },
-  methods:{
-    promiseTest(){
+  methods: {
+    promiseTest() {
       // //1. promise的基本使用
       // new Promise((resolve,reject)=>{
       //   setTimeout(()=>{
@@ -68,31 +68,74 @@ export default{
       // })
 
       // 3.promise的中return简写
-      new Promise((resolve,reject)=>{
-        setTimeout(()=>{
-          resolve('aaa')
-        },1000)
-      }).then((res)=>{
-        console.log(res,'第一层处理的代码')
-        // 对结果进行第一次处理
-        // return new Promise((resolve,reject)=>{
-        //   reject('err')
-        // })
-        // 上三行可以简写为
-        return Promise.reject('error message')
-      }).then((res)=>{
-        console.log(res,'第二层处理的代码')
-        // return new Promise(resolve=>{
-        //   resolve(res+'222')
-        // }) 
-        // 4.省略promise.resolve
-        return res+'222'
-      }).then((res)=>{
-        console.log(res,'第三层处理的代码')
-      }).catch(err=>{
-        console.log(err)
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("aaa");
+        }, 1000);
       })
+        .then(res => {
+          console.log(res, "第一层处理的代码");
+          // 对结果进行第一次处理
+          // return new Promise((resolve,reject)=>{
+          //   reject('err')
+          // })
+          // 上三行可以简写为
+          return Promise.reject("error message");
+        })
+        .then(res => {
+          console.log(res, "第二层处理的代码");
+          // return new Promise(resolve=>{
+          //   resolve(res+'222')
+          // })
+          // 4.省略promise.resolve
+          return res + "222";
+        })
+        .then(res => {
+          console.log(res, "第三层处理的代码");
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    // 模拟ajax请求
+    /*
+    请求1:
+    $ajax({
+      url:'',
+      success:function(){
+        console.log('请求1)
+      }
+    })，
+    请求2:
+    $ajax({
+      url:'',
+      success:function(){
+        console.log('请求2)
+      }
+    })
+    */
+    // 需求本身需要发送两个网络请求，缺一不可
+    promiseTest2() {
+      Promise.all([
+        $ajax({
+          url: "url1",
+          success: function(data) {
+            resolve(data)
+          }
+        }),
+        $ajax({
+          url: "url2",
+          success: function() {
+            resolve(data)
+          }
+        })
+      ]).then(results=>{
+        // 存放的是url1的结果
+        results[0]
+        // 存放的是url2的结果
+        results[1]
+      });
     }
   }
-}
+};
 </script>
