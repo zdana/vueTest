@@ -1,11 +1,12 @@
 <template>
   <div class="VuexIndex">
-    <h2>{{this.message}}</h2>
-    <h3>{{this.counter}}</h3>
+    <h2>----------------VueIndex内容----------------</h2>
+    <h2>{{$store.state.counter}}</h2>
     <button @click="counter ++">+</button>
     <button @click="counter --">-</button>
     <!-- 使用父子组件传值共享数据 -->
-    <!-- <hello-vuex :counter="counter"></hello-vuex> -->
+    <h2>----------------HellowIndex内容----------------</h2>
+    <hello-vuex :counter="counter"></hello-vuex>
   </div>
 </template>
 <script>
@@ -18,7 +19,6 @@ export default {
   data(){
     return{
       message:'我是 vueindex 页面',
-      counter:0
     }
   }
 }

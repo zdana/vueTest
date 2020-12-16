@@ -1,7 +1,7 @@
 <template>
   <div class="HelloVuex">
-    <h2>{{this.message}}</h2>
-    <h3>{{this.counter}}</h3>
+    <!-- <h3>{{this.counter}}</h3> -->
+    <h2>{{$store.state.counter}}</h2>
   </div>
 </template>
 <script>
