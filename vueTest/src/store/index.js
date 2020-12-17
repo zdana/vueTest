@@ -11,8 +11,15 @@ const store=new Vuex.Store({
     counter:1000
   },
   mutations:{
-
+    // 方法,state是默认参数
+    increment(state){
+      state.counter++
+    },
+    decrement(state){
+      state.counter--
+    }
   },
+  // 异步操作，发送网络请求
   actions:{
 
   },
