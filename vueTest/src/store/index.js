@@ -17,12 +17,19 @@ const store=new Vuex.Store({
     ]
   },
   mutations:{
+    // increment是事件类型，其他的是回调函数
     // 方法,state是默认参数
     increment(state){
       state.counter++
     },
     decrement(state){
       state.counter--
+    },
+    incrementCount(state,count){
+      state.counter+=count
+    },
+    addStudent(state,stu){
+      state.students.push(stu)
     }
   },
   // 异步操作，发送网络请求

@@ -4,6 +4,9 @@
     <h2>{{$store.state.counter}}</h2>
     <button @click="addition">+</button>
     <button @click="subtration">-</button>
+    <button @click="addCount(5)">+5</button>
+    <button @click="addCount(10)">+10</button>
+    <button @click="addStudent">增加学生</button>
 
     <h2>----------------VueIndex:getter相关信息 ----------------</h2>
     <h2>{{$store.getters.powerCounter}}</h2>
@@ -36,6 +39,14 @@ export default {
     },
     subtration(){
       this.$store.commit('decrement')
+    },
+    addCount(count){
+      // payload:负载，就是传过来的参数，可以是对象
+      this.$store.commit('incrementCount',count)
+    },
+    addStudent(){
+      const stu={id:114,name:'alen',age:26}
+      this.$store.commit('addStudent',stu)
     }
   }
 }
