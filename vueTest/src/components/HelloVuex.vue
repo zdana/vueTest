@@ -2,6 +2,7 @@
   <div class="HelloVuex">
     <!-- <h3>{{this.counter}}</h3> -->
     <h2>{{$store.state.counter}}</h2>
+    <h2>{{$store.getters.more20stu}}</h2>
   </div>
 </template>
 <script>

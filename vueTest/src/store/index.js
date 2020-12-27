@@ -8,7 +8,13 @@ Vue.use(Vuex)
 const store=new Vuex.Store({
   // 状态，其他页面可以共享状态
   state:{
-    counter:1000
+    counter:1000,
+    students:[
+      {id:110,name:'amy',age:19},
+      {id:111,name:'john',age:29},
+      {id:112,name:'eva',age:18},
+      {id:113,name:'kobe',age:26}
+    ]
   },
   mutations:{
     // 方法,state是默认参数
@@ -24,7 +30,22 @@ const store=new Vuex.Store({
 
   },
   getters:{
-
+    powerCounter(state){
+      return state.counter*state.counter
+    },
+    more20stu(state){
+      return state.students.filter(s=>s.age>20)
+    },
+    // 第二个参数无论怎么改都是getters
+    more20stuLength(state,getters){
+      return getters.more20stu.length
+    },
+    moreAgestu(state){
+      // 函数内部接收传过来的参数
+      return function(age){
+        return state.students.filter(s=>s.age>age)
+      }
+    }
   },
   modules:{
 
