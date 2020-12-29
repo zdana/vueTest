@@ -8,6 +8,11 @@
     <button @click="addCount(10)">+10</button>
     <button @click="addStudent">增加学生</button>
 
+    <h2>----------------VueIndex:info对象的内容是否是响应式 ----------------</h2>
+    <h2>{{$store.state.info}}</h2>
+    <button @click="updateInfo">修改信息</button>
+ 
+
     <h2>----------------VueIndex:getter相关信息 ----------------</h2>
     <h2>{{$store.getters.powerCounter}}</h2>
     <h2>{{$store.getters.more20stu}}</h2>
@@ -47,6 +52,9 @@ export default {
     addStudent(){
       const stu={id:114,name:'alen',age:26}
       this.$store.commit('addStudent',stu)
+    },
+    updateInfo(){
+      this.$store.commit('updateInfo')
     }
   }
 }

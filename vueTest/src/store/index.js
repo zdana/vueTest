@@ -14,7 +14,12 @@ const store=new Vuex.Store({
       {id:111,name:'john',age:29},
       {id:112,name:'eva',age:18},
       {id:113,name:'kobe',age:26}
-    ]
+    ],
+    info:{
+      name:'kobe',
+      age:40,
+      height:1.98
+    }
   },
   mutations:{
     // increment是事件类型，其他的是回调函数
@@ -30,6 +35,15 @@ const store=new Vuex.Store({
     },
     addStudent(state,stu){
       state.students.push(stu)
+    },
+    updateInfo(state){
+      state.info.name='codewhy';
+      // 响应式新增数据
+      state.info['address']='洛杉矶';
+      Vue.set(state.info,'address2','纽约')
+      // 响应式删除属性
+      delete state.info.age
+      Vue.delete(state.info,'age')
     }
   },
   // 异步操作，发送网络请求
