@@ -74,7 +74,7 @@ export default {
         }, 1000);
       })
         .then(res => {
-          console.log(res, "第一层处理的代码");
+          // console.log(res, "第一层处理的代码");
           // 对结果进行第一次处理
           // return new Promise((resolve,reject)=>{
           //   reject('err')
@@ -83,7 +83,7 @@ export default {
           return Promise.reject("error message");
         })
         .then(res => {
-          console.log(res, "第二层处理的代码");
+          // console.log(res, "第二层处理的代码");
           // return new Promise(resolve=>{
           //   resolve(res+'222')
           // })
@@ -94,7 +94,7 @@ export default {
           console.log(res, "第三层处理的代码");
         })
         .catch(err => {
-          console.log(err);
+          // console.log(err);
         });
     },
     // 模拟ajax请求

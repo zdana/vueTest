@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import{
+  INCREMENT
+}from './mutations-types'
+
 // 1. 安装插件
 Vue.use(Vuex)
 
@@ -22,9 +26,10 @@ const store=new Vuex.Store({
     }
   },
   mutations:{
+    //mutations中不能进行异步操作
     // increment是事件类型，其他的是回调函数
     // 方法,state是默认参数
-    increment(state){
+    [INCREMENT](state){
       state.counter++
     },
     decrement(state){
@@ -38,19 +43,37 @@ const store=new Vuex.Store({
     },
     updateInfo(state){
       state.info.name='codewhy';
-      // 响应式新增数据
-      state.info['address']='洛杉矶';
-      Vue.set(state.info,'address2','纽约')
-      // 响应式删除属性
-      delete state.info.age
-      Vue.delete(state.info,'age')
+      // // 响应式新增数据
+      // state.info['address']='洛杉矶';
+      // Vue.set(state.info,'address2','纽约')
+      // // 响应式删除属性
+      // delete state.info.age
+      // Vue.delete(state.info,'age')
     }
   },
   // 异步操作，发送网络请求
   actions:{
-
+    // 默认参数是context
+    aUpdateInfo(context,payload){
+      // 3-1方法
+      // setTimeout(()=>{
+      //   context.commit('updateInfo')
+      //   // console.log(payload.message)
+      //   // payload.success()
+      //   // console.log(payload)
+      // },1000)
+      // 3-2方法
+      return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+          context.commit('updateInfo')
+          console.log(payload)
+          resolve('111')
+        })
+      })
+    }
   },
   getters:{
+    // 默认参数是state
     powerCounter(state){
       return state.counter*state.counter
     },
@@ -68,6 +91,7 @@ const store=new Vuex.Store({
       }
     }
   },
+  // 单独抽取东西
   modules:{
 
   }

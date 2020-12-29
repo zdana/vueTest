@@ -25,6 +25,7 @@
 </template>
 <script>
 import HelloVuex from "components/HelloVuex";
+import {INCREMENT} from '../store/mutations-types'
 export default {
   name: "VuexIndex",
   components: {
@@ -40,7 +41,7 @@ export default {
   },
   methods:{
     addition(){
-      this.$store.commit('increment')
+      this.$store.commit(INCREMENT)
     },
     subtration(){
       this.$store.commit('decrement')
@@ -54,7 +55,25 @@ export default {
       this.$store.commit('addStudent',stu)
     },
     updateInfo(){
-      this.$store.commit('updateInfo')
+      // // 1.只传内容
+      // this.$store.commit('updateInfo')
+      // // 2.携带参数传值，函数相当于一个 参数
+      // this.$store.dispatch('aUpdateInfo',()=>{
+      //   console.log('里面已经完成了')
+      // })
+      // // 3-1. 传函数的同时传参数,但是这种做法不够优雅
+      // this.$store.dispatch('aUpdateInfo',{
+      //   message:'我是携带的信息',
+      //   success:()=>{
+      //     console.log('里面已经完成了')
+      //   }
+      // })
+      // 3-2. 传函数的同时传参数,比较优雅的写法
+      this.$store.dispatch('aUpdateInfo','我是携带的信息')
+      .then(res=>{
+        console.log('里面已经完成了');
+        console.log(res)
+      })
     }
   }
 }
