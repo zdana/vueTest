@@ -9,6 +9,35 @@ import{
 Vue.use(Vuex)
 
 // 2. 创建对象
+const moduleA={
+  state:{
+    name:'eva'
+  },
+  mutations:{
+    updateName(state,payload){
+      state.name=payload
+    }
+  },
+  actions:{
+    aUpdateName(context){
+      setTimeout(()=>{
+        context.commit('updateName','jane')
+      },1000)
+    }
+  },
+  getters:{
+    fullName(state){
+      return state.name+'111'
+    },
+    fullName2(state,getters){
+      return getters.fullName+'222'
+    },
+    // 调用根里面的state
+    fullName3(state,getters,rootState){
+      return getters.fullName2+rootState.counter
+    }
+  }
+}
 const store=new Vuex.Store({
   // 状态，其他页面可以共享状态
   state:{
@@ -91,9 +120,9 @@ const store=new Vuex.Store({
       }
     }
   },
-  // 单独抽取东西
+  // 单独抽取模块
   modules:{
-
+    a:moduleA
   }
 })
 
