@@ -128,3 +128,12 @@ const store=new Vuex.Store({
 
 // 3. 导出store对象
 export default store
+
+// 对象解构赋值
+const obj={
+  name:'why',
+  height:1.88,
+  age:18
+}
+const {name,age,height}=obj
+console.log(name,age)
