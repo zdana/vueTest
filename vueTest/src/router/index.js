@@ -20,17 +20,17 @@ const Cart = () => import('../views/cart/Cart.vue')
 const Profile = () => import('../views/profile/Profile.vue')
 
 const VueIndex = () => import('../components/VuexIndex.vue')
-
+const AxiosIndex=()=>import('../components/AxiosIndex.vue')
 Vue.use(Router)
 const routes=[
   {
         path: '',
-        redirect:'/VueIndex'//redirect,重定向，即当访问‘’时定向到home中
+        redirect:'/AxiosIndex'//redirect,重定向，即当访问‘’时定向到home中
   },
   {
-    path: '/VueIndex',
-    name: 'vuex',
-    component: VueIndex,
+    path: '/AxiosIndex',
+    name: 'Axios',
+    component: AxiosIndex,
   },
   {
     path: '',
