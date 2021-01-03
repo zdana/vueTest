@@ -33,7 +33,7 @@ const store=new Vuex.Store({
   /*以上代码es6写法为：
     state,mutations,actions,getters
   */
- 
+
   // 单独抽取模块
   modules:{
     a:moduleA
@@ -50,4 +50,4 @@ const obj={
   age:18
 }
 const {name,age,height}=obj
-console.log(name,age)
+console.log(name,age,height)
