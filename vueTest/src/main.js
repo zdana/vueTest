@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 
 import axios from 'axios'
+import { request } from './network/request'
 
 Vue.config.productionTip = false
 // Vue.prototype.$store=store
@@ -70,22 +71,39 @@ new Vue({
 // const[name1,name2,name3]=names;
 // console.log(name1)
 
-//4. 创建对应的axios实例
-const instance1 =axios.create({
-  baseURL:'http://152.136.185.210:7878/api/m5',
-  timeout:5000
-})
-instance1({
+// //4. 创建对应的axios实例
+// const instance1 =axios.create({
+//   baseURL:'http://152.136.185.210:7878/api/m5',
+//   timeout:5000
+// })
+// instance1({
+//   url:'/home/multidata'
+// }).then(res=>{
+//   console.log(res)
+// })
+// instance1({
+//   url:'/home/data',
+//     params:{
+//     type:'pop',
+//     page:1
+//   }
+// }).then(res=>{
+//   console.log(res)
+// })
+
+// 5.封装request模块
+// request({
+//   url:'/home/multidata'
+// },res=>{
+//   console.log(res)
+// },err=>{
+//   console.log(err)
+// })
+
+request({
   url:'/home/multidata'
 }).then(res=>{
   console.log(res)
-})
-instance1({
-  url:'/home/data',
-    params:{
-    type:'pop',
-    page:1
-  }
-}).then(res=>{
-  console.log(res)
+}).catch(err=>{
+  console.log(err)
 })

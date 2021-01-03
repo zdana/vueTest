@@ -1,6 +1,5 @@
 <template>
   <div class="AxiosIndex">
-    
   </div>
 </template>
 <script>
